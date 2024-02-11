@@ -78,7 +78,7 @@ class PostDeleteView(PostMixin, LoginRequiredMixin, DeleteView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["form"] = PostForm(instance=self.object)
+        context['form'] = PostForm(instance=self.object)
         return context
 
 
@@ -95,8 +95,7 @@ class PostDetailView(DetailView):
                                      is_published=True,
                                      category__is_published=True,
                                      pub_date__lte=now)
-        else:
-            return post
+        return post
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
